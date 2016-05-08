@@ -1,0 +1,64 @@
+<div class="jumbotron">
+  <h2>Calculateur de fortune</h2>
+  <form role="form"  ng-submit="store()">
+    <div class="form-group row">
+      <div class="col-md-4">
+      <div class="btn-group justified">
+        <label class="btn btn-primary" ng-model="calc.type" btn-radio="'Depot'">Depot</label>
+        <label class="btn btn-primary" ng-model="calc.type" btn-radio="'Retrait'">Retrait</label>
+      </div>
+    </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Capital initial" ng-model="calc.capital">
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" ng-model="calc.annuite">
+          <option style="display:none" value="">Annuité</option>
+          <option value="Mensuellement">Mensuellement</option>
+          <option value="Trimestriellement">Trimestriellement</option>
+          <option value="Semestriellement">Semestriellement</option>
+          <option value="Annuellement">Annuellement</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Durée d'analyse" ng-model="calc.duree">
+      </div>
+      <div class="col-md-4">
+        <div class="btn-group justified">
+          <label class="btn btn-primary" ng-model="calc.unite" btn-radio="'Mois'">Mois</label>
+          <label class="btn btn-primary" ng-model="calc.unite" btn-radio="'Ans'">Ans</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Taux d'intêret en %" ng-model="calc.taux">
+      </div>
+    </div>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-info submitbtn">Ajouter</button>
+    </div>
+  </form>
+</div>
+
+
+<table class="table table-hover table-striped" ng-show="operations.length">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Capital</th>
+        <th>Annuité</th>
+        <th>Durée</th>
+        <th>Taux</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="operation in operations track by $index">
+        <td>{{operation.type}}</td>
+        <td>{{operation.capital}}</td>
+        <td>{{operation.annuite}}</td>
+        <td>{{operation.duree}} {{operation.unite}}</td>
+        <td>{{operation.taux}} %</td>
+      </tr>
+    </tbody>
+  </table>
