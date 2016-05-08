@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name projectborhenApp.controller:MainCtrl
+ * @name fcApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the projectborhenApp
+ * Controller of the fcApp
  */
-angular.module('projectborhenApp')
+angular.module('fcApp')
   .controller('MainCtrl', ['$scope', function ($scope) {
     $scope.operations = [];
     $scope.calc = {};

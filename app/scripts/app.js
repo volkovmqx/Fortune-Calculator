@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name projectborhenApp
+ * @name fcApp
  * @description
- * # projectborhenApp
+ * # fcApp
  *
  * Main module of the application.
  */
 angular
-  .module('projectborhenApp', [
+  .module('fcApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
