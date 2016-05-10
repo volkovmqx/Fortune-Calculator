@@ -1,24 +1,12 @@
 <div class="jumbotron">
   <h2>Calculateur de fortune</h2>
-  <form role="form"  ng-submit="store()">
+  <form role="form">
     <div class="form-group row">
-      <div class="col-md-4">
-      <div class="btn-group justified">
-        <label class="btn btn-primary" ng-model="calc.type" btn-radio="'Depot'">Depot</label>
-        <label class="btn btn-primary" ng-model="calc.type" btn-radio="'Retrait'">Retrait</label>
-      </div>
-    </div>
-      <div class="col-md-4">
+      <div class="col-md-8">
         <input type="text" class="form-control" placeholder="Capital initial" ng-model="calc.capital">
       </div>
       <div class="col-md-4">
-        <select class="form-control" ng-model="calc.annuite">
-          <option style="display:none" value="">Annuité</option>
-          <option value="Mensuellement">Mensuellement</option>
-          <option value="Trimestriellement">Trimestriellement</option>
-          <option value="Semestriellement">Semestriellement</option>
-          <option value="Annuellement">Annuellement</option>
-        </select>
+        <input type="text" class="form-control" placeholder="Position dans le temps" ng-model="calc.n">
       </div>
     </div>
     <div class="form-group row">
@@ -35,30 +23,30 @@
         <input type="text" class="form-control" placeholder="Taux d'intêret en %" ng-model="calc.taux">
       </div>
     </div>
-    <div class="form-group row">
-      <button type="submit" class="btn btn-info submitbtn">Ajouter</button>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="button" class="btn btn-info" ng-click="calculsimpleinterest()">Interet simple</button>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success" ng-click="calculcomposee()">Interet composée</button>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-danger" ng-click="calculunique()">Montant unique</button>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-warning" ng-click="calculannuite()">Calcul d'annuité</button>
+      </div>
     </div>
   </form>
 </div>
 
-
-<table class="table table-hover table-striped" ng-show="operations.length">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Capital</th>
-        <th>Annuité</th>
-        <th>Durée</th>
-        <th>Taux</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="operation in operations track by $index">
-        <td>{{operation.type}}</td>
-        <td>{{operation.capital}}</td>
-        <td>{{operation.annuite}}</td>
-        <td>{{operation.duree}} {{operation.unite}}</td>
-        <td>{{operation.taux}} %</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row" ng-show="selected == 'simpleinterest'">
+  <ul>
+    <li>Interet de la periode n : {{calculateddata.ninterest}}</li>
+    <li>Interet cumulatif à la periode n : {{calculateddata.interestcumulatif}}</li>
+    <li>Valeur de P à la fin de l’analyse : {{calculateddata.finanalyse}}</li>
+  </ul>
+</div>
+<!--<div class="row">
+   <nvd3 options="options" data="data"></nvd3>
+ </div>-->
